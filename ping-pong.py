@@ -45,8 +45,8 @@ racket_width = 50
 racket_height = 150
 
 #создания мяча и ракетки   
-racket1 = Player('redracket.png', 30, (win_height - racket_height) /2, 4, 50, 150) 
-racket2 = Player('greenracket.png', win_width - racket_width - 30, (win_height - racket_height) /2, 4, 50, 150)
+racket1 = Player('redracket.png', 30, (win_height - racket_height) /2, 10, 50, 150) 
+racket2 = Player('greenracket.png', win_width - racket_width - 30, (win_height - racket_height) /2, 10, 50, 150)
 ball = GameSprite('tenis_ball.png', 200, 200, 5, 50, 50)
 
 
@@ -55,8 +55,8 @@ font = font.Font(None, 35)
 lose1 = font.render('PLAYER 1 LOSE!', True, (180, 0, 0))
 lose2 = font.render('PLAYER 2 LOSE!', True, (180, 0, 0))
 
-speed_x = 3
-speed_y = 3
+speed_x = 10
+speed_y = 10
 
 while game:
    for e in event.get():
