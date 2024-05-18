@@ -56,6 +56,14 @@ racket1 = Player('redracket.png', 30, (win_height - racket_height) /2, 10, 50, 1
 racket2 = Player('greenracket.png', win_width - racket_width - 30, (win_height - racket_height) /2, 10, 50, 150)
 ball = GameSprite('tenis_ball.png', 200, 200, 5, 50, 50)
 
+mixer.init()
+mixer.music.load('fon.ogg')
+mixer.music.play(-1)
+
+
+kick = mixer.Sound('ball.ogg')
+w_sound = mixer.Sound('w.ogg')
+
 
 font.init()
 font = font.Font(None, 35)
@@ -82,6 +90,8 @@ while game:
            speed_y *= 1.2
            racket_height -=50
            racket_width -=50
+           kick.set_volume(222)
+           kick.play()
            if sprite.collide_rect(racket1, ball):
                racket1.change_size()
            else:
@@ -94,6 +104,7 @@ while game:
        #если мяч достигает границ экрана, меняем направление его движения
        if ball.rect.y > win_height-50 or ball.rect.y < 0:
            speed_y *= -1
+           
 
 
        #если мяч улетел дальше ракетки, выводим условие проигрыша для первого игрока
@@ -101,6 +112,7 @@ while game:
            finish = True
            window.blit(lose1, (win_width/2, win_height/2))
            game_over = True
+           w_sound.play()
 
 
        #если мяч улетел дальше ракетки, выводим условие проигрыша для второго игрока
@@ -108,6 +120,7 @@ while game:
            finish = True
            window.blit(lose2, (win_width/2, win_height/2))
            game_over = True
+           w_sound.play()
 
 
        racket1.reset()
